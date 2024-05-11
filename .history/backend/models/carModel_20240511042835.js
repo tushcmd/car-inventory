@@ -18,10 +18,6 @@ const carSchema = mongoose.Schema(
             type: Number,
             required: true,
         },
-        issue: {
-            type: String,
-            required: true,
-        }
     },
     {
         timestamps: true,
