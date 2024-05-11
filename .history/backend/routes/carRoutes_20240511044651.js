@@ -25,7 +25,7 @@ router.post('/', async (request, response) => {
     };
     const car = await Car.create(newCar);
 
-    return response.status(201).send(car);
+    return response.status(201).send(book);
   } catch (error) {
     console.log(error.message);
     response.status(500).send({ message: error.message });
@@ -35,7 +35,7 @@ router.post('/', async (request, response) => {
 //Route for Get All Cars frm database
 router.get('/', async (request, response) => {
   try {
-    const cars = await Car.find({});
+    const books = await Car.find({});
 
     return response.status(200).json({
       count: cars.length,
@@ -52,7 +52,7 @@ router.get('/:id', async (request, response) => {
   try {
     const { id } = request.params;
 
-    const car = await Car.findById({ _id: id });
+    const book = await Car.findById({ _id: id });
 
     return response.status(200).json({ car });
   } catch (error) {
@@ -79,7 +79,7 @@ router.put('/:id', async (request, response) => {
   }
 });
 
-//Route for delete a car
+//Route for delete a book
 router.delete('/:id', async (request, response) => {
   try {
     const { id } = request.params;
@@ -96,5 +96,3 @@ router.delete('/:id', async (request, response) => {
     response.status(500).send({ message: error.message });
   }
 });
-
-export default router;
