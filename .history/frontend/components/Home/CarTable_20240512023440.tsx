@@ -253,7 +253,6 @@ export const columns: ColumnDef<Payment>[] = [
                         </DropdownMenuItem>
                         <DropdownMenuSeparator />
                         <DropdownMenuItem>View customer</DropdownMenuItem>
-                        <DropdownMenuSeparator />
                         <DropdownMenuItem>View payment details</DropdownMenuItem>
                     </DropdownMenuContent>
                 </DropdownMenu>

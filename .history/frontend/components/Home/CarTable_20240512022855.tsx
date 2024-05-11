@@ -245,7 +245,7 @@ export const columns: ColumnDef<Payment>[] = [
                         </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
-                        {/*<DropdownMenuLabel>Actions</DropdownMenuLabel>*/}
+                        <DropdownMenuLabel>Actions</DropdownMenuLabel>
                         <DropdownMenuItem
                             onClick={() => navigator.clipboard.writeText(payment.id)}
                         >
@@ -253,7 +253,6 @@ export const columns: ColumnDef<Payment>[] = [
                         </DropdownMenuItem>
                         <DropdownMenuSeparator />
                         <DropdownMenuItem>View customer</DropdownMenuItem>
-                        <DropdownMenuSeparator />
                         <DropdownMenuItem>View payment details</DropdownMenuItem>
                     </DropdownMenuContent>
                 </DropdownMenu>
