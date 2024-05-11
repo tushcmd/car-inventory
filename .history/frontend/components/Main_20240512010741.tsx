@@ -3,8 +3,7 @@
 import React from 'react'
 import { Button } from './ui/button'
 import { Plus } from 'lucide-react'
-import { DataTableDemo } from './Home/CarTable'
-//import CarTable from './Home/CarTable'
+import CarTable from './Home/CarTable'
 
 const Main = () => {
   return (
@@ -19,8 +18,7 @@ const Main = () => {
             </Button>
         </div>
         <div>
-            {/*<CarTable />*/}
-            <DataTableDemo />
+            <CarTable />
         </div>
 
     </section>
