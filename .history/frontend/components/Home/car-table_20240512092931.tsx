@@ -35,7 +35,7 @@ import { Input } from "@/components/ui/input"
 import { Plus } from "lucide-react"
 
 
-interface DataTableProps<TData, TValue> {
+interface CarTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[]
     data: TData[]
 }
@@ -43,7 +43,7 @@ interface DataTableProps<TData, TValue> {
 export function CarTable<TData, TValue>({
     columns,
     data,
-}: DataTableProps<TData, TValue>) {
+}: CarTableProps<TData, TValue>) {
     const [sorting, setSorting] = React.useState<SortingState>([])
     const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
         []
@@ -72,13 +72,13 @@ export function CarTable<TData, TValue>({
         <div>
             <div className="flex items-center py-4 flex-row justify-between">
                 <Input
-                    placeholder="Filter emails..."
-                    value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
+                    placeholder="Filter Car Makes..."
+                    value={(table.getColumn("make")?.getFilterValue() as string) ?? ""}
                     onChange={(event) =>
-                        table.getColumn("email")?.setFilterValue(event.target.value)
+                        table.getColumn("make")?.setFilterValue(event.target.value)
                     }
                     className="max-w-sm"
-                />
+                /> 
                 <div className="inline-flex gap-4">
                     <DropdownMenu>
                         <DropdownMenuTrigger asChild>
