@@ -40,7 +40,7 @@ interface DataTableProps<TData, TValue> {
     data: TData[]
 }
 
-export function CarTable<TData, TValue>({
+export function DataTable<TData, TValue>({
     columns,
     data,
 }: DataTableProps<TData, TValue>) {
@@ -70,7 +70,7 @@ export function CarTable<TData, TValue>({
 
     return (
         <div>
-            <div className="flex items-center py-4 flex-row justify-between">
+            <div className="flex items-center py-4">
                 <Input
                     placeholder="Filter emails..."
                     value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
@@ -79,7 +79,7 @@ export function CarTable<TData, TValue>({
                     }
                     className="max-w-sm"
                 />
-                <div className="inline-flex gap-4">
+                <div className="inline-flex">
                     <DropdownMenu>
                         <DropdownMenuTrigger asChild>
                             <Button variant="outline" className="ml-auto">

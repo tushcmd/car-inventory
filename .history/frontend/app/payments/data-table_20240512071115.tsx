@@ -40,7 +40,7 @@ interface DataTableProps<TData, TValue> {
     data: TData[]
 }
 
-export function CarTable<TData, TValue>({
+export function DataTable<TData, TValue>({
     columns,
     data,
 }: DataTableProps<TData, TValue>) {
@@ -79,7 +79,7 @@ export function CarTable<TData, TValue>({
                     }
                     className="max-w-sm"
                 />
-                <div className="inline-flex gap-4">
+                <div className="inline-flex">
                     <DropdownMenu>
                         <DropdownMenuTrigger asChild>
                             <Button variant="outline" className="ml-auto">

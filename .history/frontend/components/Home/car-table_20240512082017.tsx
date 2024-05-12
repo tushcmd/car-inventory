@@ -35,7 +35,7 @@ import { Input } from "@/components/ui/input"
 import { Plus } from "lucide-react"
 
 
-interface DataTableProps<TData, TValue> {
+interface CarTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[]
     data: TData[]
 }
