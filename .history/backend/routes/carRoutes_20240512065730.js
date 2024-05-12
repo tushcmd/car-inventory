@@ -16,7 +16,7 @@ router.post('/', async (request, response) => {
       !request.body.repairPrice
     ) {
       return response.status(400).send({
-        message: 'send all required fields: carOwner, make, model, carYear',
+        message: 'send all required fields: owner, make, model, carYear',
       });
     }
     const newCar = {
