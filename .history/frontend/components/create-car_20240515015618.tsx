@@ -1,7 +1,5 @@
 'use client'
 
-
-import { useRouter } from 'next/navigation'
 import { z } from 'zod'
 
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -18,8 +16,6 @@ import {
     FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { ToastAction } from "@/components/ui/toast"
-import { useToast } from "@/components/ui/use-toast"
 
 
 const formSchema = z.object({
@@ -31,65 +27,20 @@ const formSchema = z.object({
     repairPrice: z.number().nonnegative('Repair price must be a non-negative number'),
 })
 
-type Car = z.infer<typeof formSchema>;
-
 
 export default function CreateCar() {
     // 1. Define your form.
-    //const form = useForm<z.infer<typeof formSchema>>({
-    //    resolver: zodResolver(formSchema),
-    //    defaultValues: {
-    //        ownerName: "",
-    //        make: "",
-    //        model: "",
-    //        carYear: 2018,
-    //        issue: "",
-    //        repairPrice: 0,
-    //    },
-    //})
-
-
-    // 2. Define a submit handler.
-    //function onSubmit(values: z.infer<typeof formSchema>) {
-    //    // Do something with the form values.
-    //    // ✅ This will be type-safe and validated.
-    //    console.log(values)
-    //}
-
-    const router = useRouter()
-    const { toast } = useToast()
-    const onSubmit = async (data: Car) => {
-        try {
-            const response = await fetch('http://localhost:8080/cars', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data),
-            });
-
-            if (response.ok) {
-                toast({
-                    title: 'Car Created',
-                    description: 'Car Created successfully',
-                  })
-                router.push('/');
-            } else {
-                toast({
-                    title: 'Error',
-                    description: 'Error creating car',
-                    variant: 'destructive',
-                });
-            }
-        } catch (error) {
-            toast({
-                title: 'Error',
-                description: 'Error creating car',
-                variant: 'destructive',
-            });
-            console.log(error);
-        }
-    };
+    const form = useForm<z.infer<typeof formSchema>>({
+        resolver: zodResolver(formSchema),
+        defaultValues: {
+            ownerName: "",
+            make: "",
+            model: "",
+            carYear: 2018,
+            issue: "",
+            repairPrice: 0,
+        },
+    })
     return (
         <div className="flex items-center py-4 flex-row justify-between">
             <Form {...form}>

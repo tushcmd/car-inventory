@@ -82,7 +82,7 @@ export default function CreateCar() {
                 });
             }
         } catch (error) {
-            toast({
+            Toast({
                 title: 'Error',
                 description: 'Error creating car',
                 variant: 'destructive',

@@ -1,7 +1,5 @@
 'use client'
 
-
-import { useRouter } from 'next/navigation'
 import { z } from 'zod'
 
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -56,7 +54,6 @@ export default function CreateCar() {
     //    console.log(values)
     //}
 
-    const router = useRouter()
     const { toast } = useToast()
     const onSubmit = async (data: Car) => {
         try {
@@ -82,7 +79,7 @@ export default function CreateCar() {
                 });
             }
         } catch (error) {
-            toast({
+            Toast({
                 title: 'Error',
                 description: 'Error creating car',
                 variant: 'destructive',

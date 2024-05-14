@@ -1,7 +1,5 @@
 'use client'
 
-
-import { useRouter } from 'next/navigation'
 import { z } from 'zod'
 
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -56,7 +54,6 @@ export default function CreateCar() {
     //    console.log(values)
     //}
 
-    const router = useRouter()
     const { toast } = useToast()
     const onSubmit = async (data: Car) => {
         try {
@@ -72,17 +69,20 @@ export default function CreateCar() {
                 toast({
                     title: 'Car Created',
                     description: 'Car Created successfully',
+                    action: (
+                      <ToastAction altText="Goto schedule to undo">Undo</ToastAction>
+                    ),
                   })
                 router.push('/');
             } else {
-                toast({
+                Toast({
                     title: 'Error',
                     description: 'Error creating car',
                     variant: 'destructive',
                 });
             }
         } catch (error) {
-            toast({
+            Toast({
                 title: 'Error',
                 description: 'Error creating car',
                 variant: 'destructive',

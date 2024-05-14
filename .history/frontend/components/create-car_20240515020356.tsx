@@ -1,7 +1,5 @@
 'use client'
 
-
-import { useRouter } from 'next/navigation'
 import { z } from 'zod'
 
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -18,8 +16,6 @@ import {
     FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { ToastAction } from "@/components/ui/toast"
-import { useToast } from "@/components/ui/use-toast"
 
 
 const formSchema = z.object({
@@ -31,7 +27,7 @@ const formSchema = z.object({
     repairPrice: z.number().nonnegative('Repair price must be a non-negative number'),
 })
 
-type Car = z.infer<typeof formSchema>;
+type Car = z.infer<typeof carSchema>;
 
 
 export default function CreateCar() {
@@ -55,9 +51,6 @@ export default function CreateCar() {
     //    // ✅ This will be type-safe and validated.
     //    console.log(values)
     //}
-
-    const router = useRouter()
-    const { toast } = useToast()
     const onSubmit = async (data: Car) => {
         try {
             const response = await fetch('http://localhost:8080/cars', {
@@ -69,20 +62,21 @@ export default function CreateCar() {
             });
 
             if (response.ok) {
-                toast({
+                Toast({
                     title: 'Car Created',
                     description: 'Car Created successfully',
-                  })
+                    variant: 'success',
+                });
                 router.push('/');
             } else {
-                toast({
+                Toast({
                     title: 'Error',
                     description: 'Error creating car',
                     variant: 'destructive',
                 });
             }
         } catch (error) {
-            toast({
+            Toast({
                 title: 'Error',
                 description: 'Error creating car',
                 variant: 'destructive',
