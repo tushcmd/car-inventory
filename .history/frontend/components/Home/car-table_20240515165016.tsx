@@ -33,7 +33,6 @@ import {
 
 import { Input } from "@/components/ui/input"
 import { Plus } from "lucide-react"
-import Link from "next/link"
 
 
 interface CarTableProps<TData, TValue> {
@@ -79,7 +78,7 @@ export function CarTable<TData, TValue>({
                         table.getColumn("make")?.setFilterValue(event.target.value)
                     }
                     className="max-w-sm"
-                />
+                /> 
                 <div className="inline-flex gap-4">
                     <DropdownMenu>
                         <DropdownMenuTrigger asChild>
@@ -109,11 +108,9 @@ export function CarTable<TData, TValue>({
                                 })}
                         </DropdownMenuContent>
                     </DropdownMenu>
-                    <Link href="/create">
-                        <Button variant="outline" size="icon">
-                            <Plus className="h-4 w-4" />
-                        </Button>
-                    </Link>
+                    <Button variant="outline" size="icon">
+                        <Plus className="h-4 w-4" />
+                    </Button>
                 </div>
             </div>
             <div className="rounded-md border">
