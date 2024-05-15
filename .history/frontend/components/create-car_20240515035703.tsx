@@ -81,7 +81,7 @@ export default function CreateCar () {
               <FormItem>
                 <FormLabel>Owner Name</FormLabel>
                 <FormControl>
-                  <Input placeholder="Muturi David" {...field} />
+                  <Input placeholder="John Doe" {...field} />
                 </FormControl>
                 {/*<FormDescription>Enter the owner&apos;s name</FormDescription>*/}
                 <FormMessage />

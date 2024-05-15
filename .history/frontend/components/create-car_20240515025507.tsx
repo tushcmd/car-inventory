@@ -1,176 +1,7 @@
-'use client';
-
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm } from 'react-hook-form';
-import { z } from 'zod';
-import { Button } from '@/components/ui/button';
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
-import { toast } from "./ui/use-toast"
-import { useRouter } from 'next/navigation';
-
-const carSchema = z.object({
-  ownerName: z.string().min(1, 'Owner name is required'),
-  make: z.string().min(1, 'Make is required'),
-  model: z.string().min(1, 'Model is required'),
-  carYear: z.coerce.number().int().gte(1900, 'Car year must be after a year after 1900'),
-  issue: z.string().min(1, 'Issue is required'),
-  repairPrice: z.coerce.number().nonnegative('Repair price must be a non-negative number'),
-});
-
-type Car = z.infer<typeof carSchema>;
-
-export default function CreateCar () {
-  const router = useRouter();
-  const form = useForm<Car>({
-    resolver: zodResolver(carSchema),
-  });
-
-  const onSubmit = async (data: Car) => {
-    try {
-      const response = await fetch('http://localhost:8080/cars', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
-
-      if (response.ok) {
-        toast({
-          title: 'Car Created',
-          description: 'Car Created successfully',
-        })
-        router.push('/');
-      } else {
-        toast({
-          title: 'Error',
-          description: 'Error creating car',
-          variant: 'destructive',
-        });
-      }
-    } catch (error) {
-      toast({
-        title: 'Error',
-        description: 'Error creating car',
-        variant: 'destructive',
-      });
-      console.log(error);
-    }
-  };
-
-
-  return (
-    <div className="container flex flex-col gap-6 mx-auto items-center justify-center">
-
-      <h1 className="text-3xl font-bold">Create Car</h1>
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-4 py-4 sm:w-[24rem]">
-          <FormField
-            control={form.control}
-            name="ownerName"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Owner Name</FormLabel>
-                <FormControl>
-                  <Input placeholder="Muturi David" {...field} />
-                </FormControl>
-                {/*<FormDescription>Enter the owner&apos;s name</FormDescription>*/}
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="make"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Car Make</FormLabel>
-                <FormControl>
-                  <Input placeholder="Jeep" {...field} />
-                </FormControl>
-                {/*<FormDescription>Enter the car make</FormDescription>*/}
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="model"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Car Model</FormLabel>
-                <FormControl>
-                  <Input placeholder="Wrangler" {...field} />
-                </FormControl>
-                {/*<FormDescription>Enter the model</FormDescription>*/}
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="carYear"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Car Year</FormLabel>
-                <FormControl>
-                  <Input type='number' placeholder="2018" {...field} />
-                </FormControl>
-                {/*<FormDescription>Enter the car year</FormDescription>*/}
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="issue"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Car issue</FormLabel>
-                <FormControl>
-                  <Input placeholder="Oil Change" {...field} />
-                </FormControl>
-                {/*<FormDescription>Enter the car issue</FormDescription>*/}
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="repairPrice"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Repair Price</FormLabel>
-                <FormControl>
-                  <Input type='number' placeholder="2000" {...field} />
-                </FormControl>
-                {/*<FormDescription>Enter the repair price</FormDescription>*/}
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          {/* ... (other form fields) */}
-          <Button type="submit">Save</Button>
-        </form>
-      </Form>
-    </div>
-  );
-};
-
-{/*
 "use client"
 
 import { zodResolver } from "@hookform/resolvers/zod"
-import { DefaultValues, useForm } from "react-hook-form"
+import { useForm } from "react-hook-form"
 import { z } from "zod"
 
 import { Button } from "@/components/ui/button"
@@ -184,8 +15,6 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import router from "next/router"
-import { toast } from "./ui/use-toast"
 
 
 const formSchema = z.object({
@@ -196,7 +25,7 @@ const formSchema = z.object({
     message: 'Make is required'
   }),
   model: z.string().min(1, {
-    message: 'Model is required'
+    message:'Model is required'
   }),
   carYear: z.number().positive({
     message: 'Car year must be a positive number',
@@ -209,7 +38,7 @@ const formSchema = z.object({
   }),
 })
 
-export function CreateCar() {
+export function ProfileForm() {
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -227,37 +56,6 @@ export function CreateCar() {
   function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
-    const postValues = async (data: values) => {
-      try {
-        const response = await fetch('http://localhost:8080/cars', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(data),
-        });
-        if (response.ok) {
-          toast({
-            title: 'Car Created',
-            description: 'Car Created successfully',
-          })
-          router.push('/');
-        } else {
-          toast({
-            title: 'Error',
-            description: 'Error creating car',
-            variant: 'destructive',
-          });
-        }
-      } catch (error) {
-        toast({
-          title: 'Error',
-          description: 'Error creating car',
-          variant: 'destructive',
-        });
-        console.log(error);
-      }
-    };
     console.log(values)
   }
 
@@ -266,7 +64,7 @@ export function CreateCar() {
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
         <FormField
           control={form.control}
-          ownerName="Car Owner"
+          name="username"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Username</FormLabel>
@@ -285,8 +83,6 @@ export function CreateCar() {
     </Form>
   )
 }
-
-*/}
 {/*
 
 'use client'

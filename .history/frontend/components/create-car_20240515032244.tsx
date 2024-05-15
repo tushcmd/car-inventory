@@ -21,14 +21,14 @@ const carSchema = z.object({
   ownerName: z.string().min(1, 'Owner name is required'),
   make: z.string().min(1, 'Make is required'),
   model: z.string().min(1, 'Model is required'),
-  carYear: z.coerce.number().int().gte(1900, 'Car year must be after a year after 1900'),
+  carYear: z.number().positive('Car year must be a positive number'),
   issue: z.string().min(1, 'Issue is required'),
-  repairPrice: z.coerce.number().nonnegative('Repair price must be a non-negative number'),
+  repairPrice: z.number().nonnegative('Repair price must be a non-negative number'),
 });
 
 type Car = z.infer<typeof carSchema>;
 
-export default function CreateCar () {
+const CreateCar = () => {
   const router = useRouter();
   const form = useForm<Car>({
     resolver: zodResolver(carSchema),
@@ -69,11 +69,11 @@ export default function CreateCar () {
 
 
   return (
-    <div className="container flex flex-col gap-6 mx-auto items-center justify-center">
+    <div className="container flex flex-col gap-6 mx-auto">
 
       <h1 className="text-3xl font-bold">Create Car</h1>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-4 py-4 sm:w-[24rem]">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
           <FormField
             control={form.control}
             name="ownerName"
@@ -81,9 +81,9 @@ export default function CreateCar () {
               <FormItem>
                 <FormLabel>Owner Name</FormLabel>
                 <FormControl>
-                  <Input placeholder="Muturi David" {...field} />
+                  <Input placeholder="John Doe" {...field} />
                 </FormControl>
-                {/*<FormDescription>Enter the owner&apos;s name</FormDescription>*/}
+                <FormDescription>Enter the owner&apos;s name</FormDescription>
                 <FormMessage />
               </FormItem>
             )}
@@ -97,7 +97,7 @@ export default function CreateCar () {
                 <FormControl>
                   <Input placeholder="Jeep" {...field} />
                 </FormControl>
-                {/*<FormDescription>Enter the car make</FormDescription>*/}
+                <FormDescription>Enter the car make</FormDescription>
                 <FormMessage />
               </FormItem>
             )}
@@ -111,7 +111,7 @@ export default function CreateCar () {
                 <FormControl>
                   <Input placeholder="Wrangler" {...field} />
                 </FormControl>
-                {/*<FormDescription>Enter the model</FormDescription>*/}
+                <FormDescription>Enter the model</FormDescription>
                 <FormMessage />
               </FormItem>
             )}
@@ -123,9 +123,23 @@ export default function CreateCar () {
               <FormItem>
                 <FormLabel>Car Year</FormLabel>
                 <FormControl>
-                  <Input type='number' placeholder="2018" {...field} />
+                  <Input placeholder="2018" {...field} />
                 </FormControl>
-                {/*<FormDescription>Enter the car year</FormDescription>*/}
+                <FormDescription>Enter the car year</FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="repairPrice"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Repair Price</FormLabel>
+                <FormControl>
+                  <Input placeholder="0" {...field} />
+                </FormControl>
+                <FormDescription>Enter the repair price</FormDescription>
                 <FormMessage />
               </FormItem>
             )}
@@ -139,21 +153,7 @@ export default function CreateCar () {
                 <FormControl>
                   <Input placeholder="Oil Change" {...field} />
                 </FormControl>
-                {/*<FormDescription>Enter the car issue</FormDescription>*/}
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="repairPrice"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Repair Price</FormLabel>
-                <FormControl>
-                  <Input type='number' placeholder="2000" {...field} />
-                </FormControl>
-                {/*<FormDescription>Enter the repair price</FormDescription>*/}
+                <FormDescription>Enter the car issue</FormDescription>
                 <FormMessage />
               </FormItem>
             )}
@@ -166,6 +166,7 @@ export default function CreateCar () {
   );
 };
 
+export default CreateCar;
 {/*
 "use client"
 

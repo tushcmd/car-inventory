@@ -69,11 +69,11 @@ export default function CreateCar () {
 
 
   return (
-    <div className="container flex flex-col gap-6 mx-auto items-center justify-center">
+    <div className="container flex flex-col gap-6 mx-auto">
 
       <h1 className="text-3xl font-bold">Create Car</h1>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-4 py-4 sm:w-[24rem]">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-4 py-8 sm:w-[24rem]">
           <FormField
             control={form.control}
             name="ownerName"
@@ -81,9 +81,9 @@ export default function CreateCar () {
               <FormItem>
                 <FormLabel>Owner Name</FormLabel>
                 <FormControl>
-                  <Input placeholder="Muturi David" {...field} />
+                  <Input placeholder="John Doe" {...field} />
                 </FormControl>
-                {/*<FormDescription>Enter the owner&apos;s name</FormDescription>*/}
+                <FormDescription>Enter the owner&apos;s name</FormDescription>
                 <FormMessage />
               </FormItem>
             )}
@@ -97,7 +97,7 @@ export default function CreateCar () {
                 <FormControl>
                   <Input placeholder="Jeep" {...field} />
                 </FormControl>
-                {/*<FormDescription>Enter the car make</FormDescription>*/}
+                <FormDescription>Enter the car make</FormDescription>
                 <FormMessage />
               </FormItem>
             )}
@@ -111,7 +111,7 @@ export default function CreateCar () {
                 <FormControl>
                   <Input placeholder="Wrangler" {...field} />
                 </FormControl>
-                {/*<FormDescription>Enter the model</FormDescription>*/}
+                <FormDescription>Enter the model</FormDescription>
                 <FormMessage />
               </FormItem>
             )}
@@ -125,7 +125,7 @@ export default function CreateCar () {
                 <FormControl>
                   <Input type='number' placeholder="2018" {...field} />
                 </FormControl>
-                {/*<FormDescription>Enter the car year</FormDescription>*/}
+                <FormDescription>Enter the car year</FormDescription>
                 <FormMessage />
               </FormItem>
             )}
@@ -139,7 +139,7 @@ export default function CreateCar () {
                 <FormControl>
                   <Input placeholder="Oil Change" {...field} />
                 </FormControl>
-                {/*<FormDescription>Enter the car issue</FormDescription>*/}
+                <FormDescription>Enter the car issue</FormDescription>
                 <FormMessage />
               </FormItem>
             )}
@@ -151,9 +151,9 @@ export default function CreateCar () {
               <FormItem>
                 <FormLabel>Repair Price</FormLabel>
                 <FormControl>
-                  <Input type='number' placeholder="2000" {...field} />
+                  <Input type='number' placeholder="0" {...field} />
                 </FormControl>
-                {/*<FormDescription>Enter the repair price</FormDescription>*/}
+                <FormDescription>Enter the repair price</FormDescription>
                 <FormMessage />
               </FormItem>
             )}
