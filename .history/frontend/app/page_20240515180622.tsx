@@ -3,11 +3,25 @@ import { Car, columns } from "@/components/Home/columns"
 import { CarTable } from "@/components/Home/car-table"
 
 async function getData(): Promise<Car[]> {
-  // Fetch data from your API here.
-  const response = await fetch(`http://localhost:8080/cars`,);
+  const response = await fetch(`http://localhost:8080/cars`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
+  console.log('Response status:', response.status); // Add this line
+
+  if (!response.ok) {
+    console.error('Error fetching data:', response.statusText); // Add this line
+    throw new Error('Failed to fetch data'); // Add this line
+  }
+
   const data = await response.json();
+  console.log('Fetched data:', data); // Add this line
+
   return data;
-};
+}
 //  return [
 //    {
 //      ownerName: 'John Smith',

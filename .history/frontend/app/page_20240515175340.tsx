@@ -4,7 +4,7 @@ import { CarTable } from "@/components/Home/car-table"
 
 async function getData(): Promise<Car[]> {
   // Fetch data from your API here.
-  const response = await fetch(`http://localhost:8080/cars`,);
+  const response = await fetch(`http://localhost:8080/cars`);
   const data = await response.json();
   return data;
 };
