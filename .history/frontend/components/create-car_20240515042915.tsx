@@ -36,15 +36,10 @@ export default function CreateCar () {
 
   const onSubmit = async (data: Car) => {
     try {
-      const response = await fetch('http://localhost:3000/api/create', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+      const response = await fetch('http://localhost:3000/create', {
+        
         body: JSON.stringify(data),
       });
-  
-      const responseData = await response.json();
 
       if (response.ok) {
         toast({
@@ -55,19 +50,18 @@ export default function CreateCar () {
       } else {
         toast({
           title: 'Error',
-          description: 'Error creating Car Entry',
+          description: 'Error creating car',
           variant: 'destructive',
         });
       }
     } catch (error) {
       toast({
         title: 'Error',
-        description: 'Error creating Car Entry',
+        description: 'Error creating car',
         variant: 'destructive',
       });
       console.log(error);
     }
-    console.log(data)
   };
 
 

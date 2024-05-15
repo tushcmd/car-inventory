@@ -84,15 +84,15 @@ export const columns: ColumnDef<Car>[] = [
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            {/*<DropdownMenuLabel>Actions</DropdownMenuLabel>*/}
+            <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuItem
               //onClick={() => navigator.clipboard.writeText(payment.id)}
             >
-              Edit
+              Copy payment ID
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Delete</DropdownMenuItem>
-            {/*<DropdownMenuItem>View payment details</DropdownMenuItem>*/}
+            <DropdownMenuItem>View customer</DropdownMenuItem>
+            <DropdownMenuItem>View payment details</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       )

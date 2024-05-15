@@ -25,7 +25,7 @@ router.post('/', async (request, response) => {
       model: request.body.model,
       issue: request.body.issue,
       carYear: request.body.carYear,
-      repairPrice: request.body.repairPrice,
+      repairPrice: repairPrice.body.repairPrice,
     };
     const car = await Car.create(newCar);
 

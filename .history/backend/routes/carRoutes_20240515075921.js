@@ -8,7 +8,7 @@ const router = express.Router();
 router.post('/', async (request, response) => {
   try {
     if (
-      !request.body.ownerName ||
+      !request.carOwner ||
       !request.body.make ||
       !request.body.model ||
       !request.body.issue ||
@@ -16,16 +16,16 @@ router.post('/', async (request, response) => {
       !request.body.repairPrice
     ) {
       return response.status(400).send({
-        message: 'send all required fields: ownerName, make, model, issue, carYear and repairPrice',
+        message: 'send all required fields: carOwner, make, model, carYear',
       });
     }
     const newCar = {
-      ownerName: request.body.ownerName,
+      carOwner: request.body.carOwner,
       make: request.body.make,
       model: request.body.model,
       issue: request.body.issue,
       carYear: request.body.carYear,
-      repairPrice: request.body.repairPrice,
+      repairPrice: repairPrice.body.repairPrice,
     };
     const car = await Car.create(newCar);
 

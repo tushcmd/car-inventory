@@ -2,7 +2,7 @@ import mongoose, { Schema } from 'mongoose';
 
 const carSchema = mongoose.Schema(
     {
-        ownerName: {
+        carOwner: {
             type: String,
             required: true,
         },

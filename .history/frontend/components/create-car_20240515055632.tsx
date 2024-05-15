@@ -18,7 +18,7 @@ import { toast } from "./ui/use-toast"
 import { useRouter } from 'next/navigation';
 
 const carSchema = z.object({
-  ownerName: z.string().min(1, 'Owner name is required'),
+  ownerName: z.string().min(2, 'Owner name is required'),
   make: z.string().min(1, 'Make is required'),
   model: z.string().min(1, 'Model is required'),
   carYear: z.coerce.number().int().gte(1900, 'Car year must be after a year after 1900'),
@@ -36,7 +36,7 @@ export default function CreateCar () {
 
   const onSubmit = async (data: Car) => {
     try {
-      const response = await fetch('http://localhost:3000/api/create', {
+      const response = await fetch('/api/create', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -67,7 +67,6 @@ export default function CreateCar () {
       });
       console.log(error);
     }
-    console.log(data)
   };
 
 

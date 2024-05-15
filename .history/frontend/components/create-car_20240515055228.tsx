@@ -34,9 +34,9 @@ export default function CreateCar () {
     resolver: zodResolver(carSchema),
   });
 
-  const onSubmit = async (data: Car) => {
+  const onSubmit = async (data: FormData) => {
     try {
-      const response = await fetch('http://localhost:3000/api/create', {
+      const response = await fetch('/api/create', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -67,7 +67,6 @@ export default function CreateCar () {
       });
       console.log(error);
     }
-    console.log(data)
   };
 
 

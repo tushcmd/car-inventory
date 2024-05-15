@@ -8,7 +8,7 @@ const router = express.Router();
 router.post('/', async (request, response) => {
   try {
     if (
-      !request.body.ownerName ||
+      !request.ownerName ||
       !request.body.make ||
       !request.body.model ||
       !request.body.issue ||
@@ -20,12 +20,12 @@ router.post('/', async (request, response) => {
       });
     }
     const newCar = {
-      ownerName: request.body.ownerName,
+      carOwner: request.body.ownerName,
       make: request.body.make,
       model: request.body.model,
       issue: request.body.issue,
       carYear: request.body.carYear,
-      repairPrice: request.body.repairPrice,
+      repairPrice: repairPrice.body.repairPrice,
     };
     const car = await Car.create(newCar);
 

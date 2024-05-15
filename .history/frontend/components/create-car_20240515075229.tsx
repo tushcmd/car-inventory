@@ -67,7 +67,6 @@ export default function CreateCar () {
       });
       console.log(error);
     }
-    console.log(data)
   };
 
 

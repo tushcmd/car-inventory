@@ -91,7 +91,7 @@ export const columns: ColumnDef<Car>[] = [
               Edit
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Delete</DropdownMenuItem>
+            <DropdownMenuItem>View customer</DropdownMenuItem>
             {/*<DropdownMenuItem>View payment details</DropdownMenuItem>*/}
           </DropdownMenuContent>
         </DropdownMenu>
