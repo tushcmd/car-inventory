@@ -98,7 +98,7 @@
 	}
 
 	.page-container {
-		@apply container flex flex-col gap-2 max-w-7xl;
+		@apply container flex flex-col gap-4 max-w-7xl;
 	}
   .create-edit-page-container {
 		@apply container py-10 flex flex-col gap-16 max-w-7xl;
