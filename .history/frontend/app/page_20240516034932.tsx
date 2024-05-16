@@ -80,9 +80,8 @@ export default async function Page() {
 
   return (
     <div className="page-container min-h-screen">
-      <Lambo />
       <CarTable columns={columns} data={data} />
-      
+      <Lambo />
     </div>
   )
 }

@@ -2,7 +2,6 @@
 import { Car, columns } from "@/components/Home/columns"
 import { CarTable } from "@/components/Home/car-table"
 import Image from 'next/image';
-import Lambo from "@/components/lambo";
 
 async function getData(): Promise<Car[]> {
   // Fetch data from your API here.
@@ -80,9 +79,13 @@ export default async function Page() {
 
   return (
     <div className="page-container min-h-screen">
-      <Lambo />
       <CarTable columns={columns} data={data} />
-      
+      <Image
+        src="/frontend/public/lamborghini.png"
+        alt="lamborghini.png"
+        layout="fill" // Required when using a parent container
+        objectFit="cover" // Ensures the image covers the entire container
+      />
     </div>
   )
 }
