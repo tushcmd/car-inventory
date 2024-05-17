@@ -1,4 +1,3 @@
-//using swr to revalidate data immediately after change HAHA TUSH IS GENIUS
 'use client'
 
 import { Car, columns } from "@/components/Home/columns";
@@ -49,7 +48,6 @@ export default function Page() {
 }
 
 {/*
-//using plain fetch
 import { Car, columns } from "@/components/Home/columns";
 import { CarTable } from "@/components/Home/car-table";
 import Lambo from "@/components/lambo";
