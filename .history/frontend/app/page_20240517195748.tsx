@@ -1,50 +1,3 @@
-import { Car, columns } from "@/components/Home/columns";
-import { CarTable } from "@/components/Home/car-table";
-import Lambo from "@/components/lambo";
-
-import useSWR from 'swr';
-import fetcher from "@/utils/fetcher";
-
-interface FetchedData {
-  count: number;
-  data: {
-    _id: string;
-    ownerName: string;
-    make: string;
-    model: string;
-    carYear: number;
-    issue: string;
-    repairPrice: number;
-    createdAt: string;
-    updatedAt: string;
-    __v: number;
-  }[];
-}
-
-export default function Page() {
-  const { data, error } = useSWR<FetchedData>('http://localhost:8080/cars', fetcher);
-
-  if (error) return <div>An error occurred while fetching the data.</div>;
-  if (!data) return <div>Loading...</div>;
-
-  // Map the fetched data to the expected Car type
-  const mappedData: Car[] = data.data.map((item) => ({
-    ownerName: item.ownerName,
-    make: item.make,
-    model: item.model,
-    carYear: item.carYear,
-    issue: item.issue,
-    repairPrice: item.repairPrice,
-  }));
-
-  return (
-    <div className="page-container min-h-screen">
-      <Lambo />
-      <CarTable columns={columns} data={mappedData} />
-    </div>
-  );
-}
-
 {/*
 import { Car, columns } from "@/components/Home/columns";
 import { CarTable } from "@/components/Home/car-table";
@@ -66,16 +19,8 @@ interface FetchedData {
   }[];
 }
 
-//  GET request options
-const requestOptions = {
-  method: 'GET',
-  headers: {
-    'Content-Type': 'application/json'
-  },
-};
-
 async function getData(): Promise<Car[]> {
-  const response = await fetch(`http://localhost:8080/cars`, requestOptions);
+  const response = await fetch(`http://localhost:8080/cars`);
   const data: FetchedData = await response.json();
 
   // Map the fetched data to the expected Car type
@@ -104,9 +49,6 @@ export default async function Page() {
 
 */}
 
-
-{/*
-
 import { Car, columns } from "@/components/Home/columns"
 import { CarTable } from "@/components/Home/car-table"
 import Lambo from "@/components/lambo";
@@ -122,7 +64,7 @@ import Lambo from "@/components/lambo";
 //  return data;
 //};
 
-//  GET request options
+// POST request options
 const requestOptions = {
   method: 'GET',
   headers: {
@@ -131,7 +73,7 @@ const requestOptions = {
 };
 
 async function getData(): Promise<Car[]> {
-  const res = await fetch(`http://localhost:8080/cars`, requestOptions)
+  const res = await fetch(`http://localhost:8080/cars`)
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.
   const data = await res.json();
@@ -159,7 +101,6 @@ export default async function Page() {
   )
 }
 
-*/}
 
 
 //  return [
