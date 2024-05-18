@@ -36,7 +36,7 @@ export default function CreateCar () {
 
   const onSubmit = async (data: Car) => {
     try {
-      const response = await fetch('http://localhost:8080/cars', {
+      const response = await fetch('http://localhost:3000/api/create', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
