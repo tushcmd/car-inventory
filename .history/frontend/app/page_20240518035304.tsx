@@ -27,11 +27,8 @@ interface FetchedData {
 export default function Page() {
   const { data, error } = useSWR<FetchedData>('http://localhost:8080/cars', fetcher);
 
-  if (error) return <div className="page-container min-h-screen items-center justify-center">An error occurred while fetching the data.</div>;
-  if (!data) return <div className="page-container min-h-screen items-center justify-center gap-6">
-    <p className="text-xl">Loading, please wait...</p>
-    <div className="loader"></div>
-  </div>;
+  if (error) return <div className="page-container min-h-screen">An error occurred while fetching the data.</div>;
+  if (!data) return <div className="page-container min-h-screen">Loading...</div>;
 
   // Map the fetched data to the expected Car type
   const mappedData: Car[] = data.data.map((item) => ({

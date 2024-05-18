@@ -28,8 +28,8 @@ export default function Page() {
   const { data, error } = useSWR<FetchedData>('http://localhost:8080/cars', fetcher);
 
   if (error) return <div className="page-container min-h-screen items-center justify-center">An error occurred while fetching the data.</div>;
-  if (!data) return <div className="page-container min-h-screen items-center justify-center gap-6">
-    <p className="text-xl">Loading, please wait...</p>
+  if (!data) return <div className="page-container min-h-screen items-center justify-center">
+    <p>Loading...</p>
     <div className="loader"></div>
   </div>;
 
