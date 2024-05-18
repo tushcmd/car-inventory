@@ -7,9 +7,8 @@ import Lambo from "@/components/lambo";
 
 import useSWR from 'swr';
 import fetcher from "@/utils/fetcher";
-import GearSpinner from "@/components/gear-spinner";
 
-
+import gearSpinner' from "@/components/gear-spinner";
 
 interface FetchedData {
   count: number;
@@ -33,7 +32,7 @@ export default function Page() {
   if (error) return <div className="page-container min-h-screen items-center justify-center">An error occurred while fetching the data.</div>;
   if (!data) return <div className="page-container min-h-screen items-center justify-center gap-6">
     <p className="text-xl">Loading, please wait...</p>
-    <GearSpinner />
+    <gearSpinner />
   </div>;
 
   // Map the fetched data to the expected Car type

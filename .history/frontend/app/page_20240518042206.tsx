@@ -7,9 +7,8 @@ import Lambo from "@/components/lambo";
 
 import useSWR from 'swr';
 import fetcher from "@/utils/fetcher";
-import GearSpinner from "@/components/gear-spinner";
 
-
+//import gearSpinner from "@/components/gear-spinner";
 
 interface FetchedData {
   count: number;
