@@ -100,7 +100,7 @@ export default function CreateCar () {
                 <FormControl>
                   <Input placeholder="Jeep" {...field} />
                 </FormControl>
-                
+                {/*<FormDescription>Enter the car make</FormDescription>*/}
                 <FormMessage />
               </FormItem>
             )}

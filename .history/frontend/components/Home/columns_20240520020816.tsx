@@ -25,6 +25,10 @@ export type Car = {
 
 export const columns: ColumnDef<Car>[] = [
   {
+    accessorKey: "id",
+    header: "ID",
+  },
+  {
     accessorKey: "ownerName",
     header: "Owner",
   },

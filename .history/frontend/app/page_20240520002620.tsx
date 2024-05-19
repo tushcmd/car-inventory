@@ -38,7 +38,6 @@ export default function Page() {
 
   // Map the fetched data to the expected Car type
   const mappedData: Car[] = data.data.map((item) => ({
-    id: item._id,
     ownerName: item.ownerName,
     make: item.make,
     model: item.model,

@@ -25,6 +25,9 @@ export type Car = {
 
 export const columns: ColumnDef<Car>[] = [
   {
+    accessorKey: "id", // Include the id as an accessorKey without a header
+  },
+  {
     accessorKey: "ownerName",
     header: "Owner",
   },

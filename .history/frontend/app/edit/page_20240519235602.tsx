@@ -1,24 +1,4 @@
 
-'use client';
-
-import EditCar from '@/components/edit-car';
-
-interface EditCarPageProps {
-  params: {
-    id: string;
-  };
-}
-
-const EditCarPage: React.FC<EditCarPageProps> = ({ params }) => {
-  return (
-    <div className="create-edit-page-container min-h-screen">
-      <EditCar params={params} />
-    </div>
-  );
-};
-
-export default EditCarPage;
-
 {/*
 import EditCar from "@/components/edit-car";
 import { Car } from "@/components/Home/columns";

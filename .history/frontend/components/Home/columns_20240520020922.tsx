@@ -25,6 +25,10 @@ export type Car = {
 
 export const columns: ColumnDef<Car>[] = [
   {
+    accessorKey: "id",
+    header: null, // Set header to null or an empty string to hide the column header
+  },
+  {
     accessorKey: "ownerName",
     header: "Owner",
   },

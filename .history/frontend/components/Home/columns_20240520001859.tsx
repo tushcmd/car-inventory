@@ -71,7 +71,6 @@ export const columns: ColumnDef<Car>[] = [
     id: "actions",
     cell: ({ row }) => {
       const car = row.original;
-      const { id, ownerName, make, model, carYear, issue, repairPrice } = car;
       return <CarActions car={car} />;
     },
   },
