@@ -3,8 +3,7 @@
 
 import { ColumnDef } from "@tanstack/react-table"
 
-//import { ArrowUpDown, MoreHorizontal } from "lucide-react"
-import { ArrowUpDown, MoreHorizontal, Edit, Trash2 } from 'lucide-react';
+import { ArrowUpDown, MoreHorizontal } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -17,16 +16,13 @@ import {
 } from "@/components/ui/dropdown-menu"
 
 import { useRouter } from "next/router"
-import { toast } from "../ui/use-toast"
-import { useState } from "react"
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
 
-
+const router = useRouter();
 
 export type Car = {
-  id: string,
   ownerName: string,
   make: string,
   model: string,
@@ -34,54 +30,6 @@ export type Car = {
   issue: string,
   repairPrice: number
 }
-
-const useCarActions = (car: Car) => {
-  const router = useRouter();
-  const [loading, setLoading] = useState(false);
-
-  const handleEditClick = () => {
-    router.push(`/cars/edit/${car.id}`);
-  };
-
-  const handleDelete = async () => {
-    try {
-      setLoading(true);
-      const response = await fetch(`http://localhost:8080/cars/${car.id}`, {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-
-      if (response.ok) {
-        toast({
-          title: 'Car Deleted',
-          description: 'Car Deleted successfully',
-        });
-        //I may not need router.refresh(); I use swr to fetch the data
-        //Property 'refresh' does not exist on type 'NextRouter'. I get this error
-        //router.refresh(); // Refresh the page after successful deletion
-      } else {
-        toast({
-          title: 'Error',
-          description: 'Error deleting car',
-          variant: 'destructive',
-        });
-      }
-    } catch (error) {
-      toast({
-        title: 'Error',
-        description: 'Error deleting car',
-        variant: 'destructive',
-      });
-      console.log(error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  return { handleEditClick, handleDelete, loading };
-};
 
 export const columns: ColumnDef<Car>[] = [
   {
@@ -131,7 +79,6 @@ export const columns: ColumnDef<Car>[] = [
     id: "actions",
     cell: ({ row }) => {
       const payment = row.original
-      const { handleEditClick, handleDelete, loading } = useCarActions(car);
 
       return (
         <DropdownMenu>
@@ -144,20 +91,13 @@ export const columns: ColumnDef<Car>[] = [
           <DropdownMenuContent align="end">
             {/*<DropdownMenuLabel>Actions</DropdownMenuLabel>*/}
             <DropdownMenuItem
-              //onClick={() => navigator.clipboard.writeText(payment.id)}
-              //onClick={() router.push('/')}
-              onClick={handleEditClick} disabled={loading}
+            //onClick={() => navigator.clipboard.writeText(payment.id)}
+            onClick={() router.push('/');}
             >
-              <Edit className="mr-2 h-4 w-4" />
               Edit
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem
-              onClick={handleDelete} disabled={loading}
-            >
-              <Trash2 className="mr-2 h-4 w-4" />
-              Delete
-            </DropdownMenuItem>
+            <DropdownMenuItem>Delete</DropdownMenuItem>
             {/*<DropdownMenuItem>View payment details</DropdownMenuItem>*/}
           </DropdownMenuContent>
         </DropdownMenu>

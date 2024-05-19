@@ -3,8 +3,7 @@
 
 import { ColumnDef } from "@tanstack/react-table"
 
-//import { ArrowUpDown, MoreHorizontal } from "lucide-react"
-import { ArrowUpDown, MoreHorizontal, Edit, Trash2 } from 'lucide-react';
+import { ArrowUpDown, MoreHorizontal } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -131,7 +130,6 @@ export const columns: ColumnDef<Car>[] = [
     id: "actions",
     cell: ({ row }) => {
       const payment = row.original
-      const { handleEditClick, handleDelete, loading } = useCarActions(car);
 
       return (
         <DropdownMenu>
@@ -144,20 +142,13 @@ export const columns: ColumnDef<Car>[] = [
           <DropdownMenuContent align="end">
             {/*<DropdownMenuLabel>Actions</DropdownMenuLabel>*/}
             <DropdownMenuItem
-              //onClick={() => navigator.clipboard.writeText(payment.id)}
-              //onClick={() router.push('/')}
-              onClick={handleEditClick} disabled={loading}
+            //onClick={() => navigator.clipboard.writeText(payment.id)}
+            //onClick={() router.push('/')}
             >
-              <Edit className="mr-2 h-4 w-4" />
               Edit
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem
-              onClick={handleDelete} disabled={loading}
-            >
-              <Trash2 className="mr-2 h-4 w-4" />
-              Delete
-            </DropdownMenuItem>
+            <DropdownMenuItem>Delete</DropdownMenuItem>
             {/*<DropdownMenuItem>View payment details</DropdownMenuItem>*/}
           </DropdownMenuContent>
         </DropdownMenu>

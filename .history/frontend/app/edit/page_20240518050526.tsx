@@ -26,7 +26,7 @@ interface FetchedData {
   };
   
   async function getData(): Promise<Car[]> {
-    const response = await fetch(`http://localhost:8080/cars${id}`, requestOptions);
+    const response = await fetch(`http://localhost:8080/cars`, requestOptions);
     const data: FetchedData = await response.json();
   
     // Map the fetched data to the expected Car type
@@ -45,7 +45,8 @@ interface FetchedData {
 export default function Create() {
     return (
         <div className="create-edit-page-container min-h-screen">
-            <EditCar />
+            {/*<h2 className="pb-4">Create</h2>*/}
+            <EditCar data={mappedData}/>
         </div>
     )
 }
