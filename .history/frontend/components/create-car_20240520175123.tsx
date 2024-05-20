@@ -74,7 +74,7 @@ export default function CreateCar () {
   return (
     <div className="container flex flex-col gap-6 mx-auto items-center justify-center">
 
-      <h1 className="text-3xl font-bold">Create Car</h1>
+      <h1 className="text-2xl font-bold items-start">Create Car Entry Below</h1>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-4 py-4 sm:w-[24rem]">
           <FormField

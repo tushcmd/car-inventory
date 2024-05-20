@@ -111,6 +111,75 @@ const EditCar = ({ params }: EditCarParams) => {
                             </FormItem>
                         )}
                     />
+                    <FormField
+                        control={form.control}
+                        name="make"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Car Make</FormLabel>
+                                <FormControl>
+                                    <Input placeholder="Jeep" {...field} />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    <FormField
+                        control={form.control}
+                        name="model"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Car Model</FormLabel>
+                                <FormControl>
+                                    <Input placeholder="Wrangler" {...field} />
+                                </FormControl>
+                                {/*<FormDescription>Enter the model</FormDescription>*/}
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    <FormField
+                        control={form.control}
+                        name="carYear"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Car Year</FormLabel>
+                                <FormControl>
+                                    <Input type='number' placeholder="2018" {...field} />
+                                </FormControl>
+                                {/*<FormDescription>Enter the car year</FormDescription>*/}
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    <FormField
+                        control={form.control}
+                        name="issue"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Car issue</FormLabel>
+                                <FormControl>
+                                    <Input placeholder="Oil Change" {...field} />
+                                </FormControl>
+                                {/*<FormDescription>Enter the car issue</FormDescription>*/}
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    <FormField
+                        control={form.control}
+                        name="repairPrice"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Repair Price</FormLabel>
+                                <FormControl>
+                                    <Input type='number' placeholder="2000" {...field} />
+                                </FormControl>
+                                {/*<FormDescription>Enter the repair price</FormDescription>*/}
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
                     {/* ... (other form fields) */}
                     <Button type="submit">Save</Button>
                 </form>

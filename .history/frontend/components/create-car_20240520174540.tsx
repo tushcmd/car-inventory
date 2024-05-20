@@ -76,7 +76,7 @@ export default function CreateCar () {
 
       <h1 className="text-3xl font-bold">Create Car</h1>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-4 py-4 sm:w-[24rem]">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
           <FormField
             control={form.control}
             name="ownerName"

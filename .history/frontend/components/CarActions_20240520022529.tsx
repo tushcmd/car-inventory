@@ -24,7 +24,7 @@ const CarActions: React.FC<CarActionsProps> = ({ car }) => {
   const [loading, setLoading] = useState(false);
 
   const handleEditClick = () => {
-    router.push(`/edit/${car.id}`);
+    router.push(`/cars/edit/${car.id}`);
   };
 
   const handleDelete = async () => {
@@ -43,6 +43,8 @@ const CarActions: React.FC<CarActionsProps> = ({ car }) => {
           description: 'Car Deleted successfully',
         });
         router.refresh(); // Refresh the page after successful deletion
+        //router.push(`/home?refreshId=${new Date().getTime()}`)
+        router.push(`/`);
       } else {
         toast({
           title: 'Error',

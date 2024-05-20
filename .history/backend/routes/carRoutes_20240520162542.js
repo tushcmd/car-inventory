@@ -64,22 +64,7 @@ router.get('/', async (request, response) => {
 //    response.status(500).send({ message: error.message });
 //  }
 //});
-//Route for Get One Car from database
-router.get('/:id', async (request, response) => {
-  try {
-    const { id } = request.params;
-    const car = await Car.findById({ _id: id });
 
-    if (!car) {
-      return response.status(404).json({ message: 'Car not found' });
-    }
-
-    return response.status(200).json({ car });
-  } catch (error) {
-    console.log(error.message);
-    response.status(500).send({ message: error.message });
-  }
-});
 
 
 
