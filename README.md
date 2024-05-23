@@ -1,7 +1,12 @@
 
 # Car Inventory
 
+![Main Page](<public/FireShot Capture 418 - Car Garage Inventory - localhost.png>)
+![Create Entry Page](<public/FireShot Capture 419 - Car Garage Inventory - localhost.png>)
+
 In as much as Nextjs is a fullstack framework, there are benefits of having a separate backend sometimes. This repo covers a simple CRUD app that uses:
+
+[text](public/Garage.mkv)
 
 ## Authors
 
@@ -19,6 +24,9 @@ I aim at being a proficient full stack developer...
 - Shadcn ui
 - Tanstack Table
 - Next themes
+- swr
+- react-hook-form
+- zod
 
 ### Back end
 
@@ -28,9 +36,10 @@ I aim at being a proficient full stack developer...
 
 ## Features
 
-- placeholder
-- placeholder
-- placeholder
+- Search implementation
+- Table pagination
+- Fetch using swr
+- Multiple pages
 - placeholder
 - placeholder
 - placeholder
@@ -39,3 +48,9 @@ I aim at being a proficient full stack developer...
 ## Things I can add later
 
 - Data card
+-
+
+## Things to do yet
+
+- Deploy backed api
+- Fix form.reset bug in the edit page

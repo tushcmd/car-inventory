@@ -123,9 +123,9 @@ const EditCarPage: React.FC<EditCarPageProps> = ({ params }) => {
                 <FormItem>
                   <FormLabel>Owner Name</FormLabel>
                   <FormControl>
-                    <Input placeholder="Muturi David" {...field} />
+                    <Input {...field} defaultValue={field.value}/>
                   </FormControl>
-                  <FormDescription>Enter the owner&apos;s name</FormDescription>
+                  
                   <FormMessage />
                 </FormItem>
               )}
@@ -137,7 +137,7 @@ const EditCarPage: React.FC<EditCarPageProps> = ({ params }) => {
                 <FormItem>
                   <FormLabel>Car Make</FormLabel>
                   <FormControl>
-                    <Input placeholder="Jeep" {...field} />
+                    <Input {...field} value={field.value}/>
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -150,7 +150,7 @@ const EditCarPage: React.FC<EditCarPageProps> = ({ params }) => {
                 <FormItem>
                   <FormLabel>Car Model</FormLabel>
                   <FormControl>
-                    <Input placeholder="Wrangler" {...field} />
+                    <Input {...field} value={field.value}/>
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -163,7 +163,7 @@ const EditCarPage: React.FC<EditCarPageProps> = ({ params }) => {
                 <FormItem>
                   <FormLabel>Car Year</FormLabel>
                   <FormControl>
-                    <Input type='number' placeholder="2018" {...field} />
+                    <Input type='number' {...field} value={field.value}/>
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -176,7 +176,7 @@ const EditCarPage: React.FC<EditCarPageProps> = ({ params }) => {
                 <FormItem>
                   <FormLabel>Car issue</FormLabel>
                   <FormControl>
-                    <Input placeholder="Oil Change" {...field} />
+                    <Input {...field} value={field.value}/>
                   </FormControl>
 
                   <FormMessage />
@@ -190,7 +190,7 @@ const EditCarPage: React.FC<EditCarPageProps> = ({ params }) => {
                 <FormItem>
                   <FormLabel>Repair Price</FormLabel>
                   <FormControl>
-                    <Input type='number' placeholder="2000" {...field} />
+                    <Input type='number' {...field} value={field.value}/>
                   </FormControl>
 
                   <FormMessage />
