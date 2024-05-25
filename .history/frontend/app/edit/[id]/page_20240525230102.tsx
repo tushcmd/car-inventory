@@ -79,7 +79,7 @@ const EditCarPage: React.FC<EditCarPageProps> = ({ params }) => {
 
   const onSubmit = async (data: Car) => {
     try {
-      const response = await fetch(`https://garage-server-4ypk.onrender.com/${id}`, {
+      const response = await fetch(`http://localhost:8080/cars/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

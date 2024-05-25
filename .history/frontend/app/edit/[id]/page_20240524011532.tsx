@@ -48,7 +48,7 @@ interface EditCarPageProps {
 
 const EditCarPage: React.FC<EditCarPageProps> = ({ params }) => {
   const { id } = params;
-  const { data: carData, isLoading, error } = useSWR(`https://garage-server-4ypk.onrender.com/cars/${id}`, fetcher);
+  const { data: carData, isLoading, error } = useSWR(`http://localhost:8080/cars/${id}`, fetcher);
   const router = useRouter();
   const form = useForm<Car>({
     resolver: zodResolver(carSchema),
@@ -79,7 +79,7 @@ const EditCarPage: React.FC<EditCarPageProps> = ({ params }) => {
 
   const onSubmit = async (data: Car) => {
     try {
-      const response = await fetch(`https://garage-server-4ypk.onrender.com/${id}`, {
+      const response = await fetch(`http://localhost:8080/cars/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
