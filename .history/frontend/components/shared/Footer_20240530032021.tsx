@@ -7,9 +7,9 @@ const Footer: FC = () => {
     <footer className='border-t'>
       <div className='layout-container flex flex-col gap-5 items-center justify-center py-10'>
         <Logo />
-        <div className='flex md:flex-row flex-col-reverse items-center justify-center gap-5'>
+        <div className='flex flex-row items-center justify-center gap-5'>
           <p>App version 0.1.0</p>
-          <div className='inline-flex gap-3'>
+          <div className='inline-flex max-w-3xl gap-3'>
             <div>
               <Link
                 href="https://github.com/tushcmd/car-inventory"
